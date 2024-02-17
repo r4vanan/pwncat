@@ -555,8 +555,8 @@ class Linux(Platform):
     PROMPTS = {
         "sh": """'$(command printf "(remote) $(whoami)@$(uname -n):$PWD\\$ ")'""",
         "dash": """'$(command printf "(remote) $(whoami)@$(uname -n):$PWD\\$ ")'""",
-        "zsh": """'%B%F{red}(remote) %B%F{yellow}%n@%M%B%F{reset}:%B%F{cyan}$PWD%B%(#.%b%F{white}#.%b%F{white}$)%b%F{reset} '""",
-        "default": """'$(command printf "\\[\\033[01;31m\\](remote)\\[\\033[0m\\] \\[\\033[01;33m\\]$(whoami)@$(uname -n)\\[\\033[0m\\]:\\[\\033[1;36m\\]$PWD\\[\\033[0m\\]\\$ ")'""",
+        "zsh": """'%B%F{red}(remote)%B%F{green}(Users=%b%F{white}$(who | wc -l)%B%F{green}) %B%F{yellow}%n@%M%B%F{reset}:%B%F{cyan}$PWD%B%(#.%b%F{white}#.%b%F{white}$)%b%F{reset} '""",
+        "default": """'$(command printf "\\[\\033[01;31m\\](remote)\\[\\033[0m\\]\\[\\033[1;32m\\](users=\\[\\033[0m\\]\\[\\033[0m\\]$(who | wc -l)\\033[1;32m\\]) \\[\\033[01;33m\\]$(whoami)@$(uname -n)\\[\\033[0m\\]:\\[\\033[1;36m\\]$PWD\\[\\033[0m\\]\\$ ")'""",
     }
 
     def __init__(self, session, channel: pwncat.channel.Channel, *args, **kwargs):
